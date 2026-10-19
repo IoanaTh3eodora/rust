@@ -1,82 +1,71 @@
-fn add_chars_n (mut s : String, c : char, n : u32) -> String
-{
+fn add_chars_n(mut s: String, c: char, n: u32) -> String {
     let mut i = 0;
-   while i < n {
-    s.push(c);
-    i += 1;
-   } 
-   s
+    while i < n {
+        s.push(c);
+        i += 1;
+    }
+    s
 }
-fn add_chars_ref(s : &mut String, c : char, n : u32)
-{
-let mut  i = 0;
-while i < n {
-    s.push(c);
-    i += 1;
+fn add_chars_ref(s: &mut String, c: char, n: u32) {
+    let mut i = 0;
+    while i < n {
+        s.push(c);
+        i += 1;
+    }
 }
-}
-fn add_space(s: &mut String, n : u32)
-{
+fn add_space(s: &mut String, n: u32) {
     let mut i = 0;
     while i < n {
         s.push(' ');
         i += 1;
     }
 }
-fn add_str(s : &mut String, t : &str)
-{
-   s.push_str(t);
+fn add_str(s: &mut String, t: &str) {
+    s.push_str(t);
 }
-fn add_integer(s : &mut String, mut x : u32)
-{
+fn add_integer(s: &mut String, mut x: u32) {
     let mut tmp = String::new();
     let mut a = 0;
-    while x > 0
-    {
+    while x > 0 {
         let c = ((x % 10) as u8 + b'0') as char;
         tmp.push(c);
         a += 1;
         x /= 10;
         if x > 0 && a == 3 {
-        tmp.push('_');
-        a = 0;
+            tmp.push('_');
+            a = 0;
         }
     }
     for ch in tmp.chars().rev() {
-    s.push(ch);
+        s.push(ch);
     }
 }
-fn add_float(s : &mut String, mut x : f64)
-{
+fn add_float(s: &mut String, mut x: f64) {
     x += 0.0005;
     let int_x = x as u32;
     let mut tmp = String::new();
     let mut copy_int_x = int_x;
-    if copy_int_x == 0
-    {
+    if copy_int_x == 0 {
         tmp.push('0');
     }
-    while copy_int_x > 0
-    {
+    while copy_int_x > 0 {
         let c = ((copy_int_x % 10) as u8 + b'0') as char;
         tmp.push(c);
         copy_int_x /= 10;
     }
-    for ch in tmp.chars().rev() 
-    {
+    for ch in tmp.chars().rev() {
         s.push(ch);
     }
-s.push('.');
+    s.push('.');
 
-let mut frac_x = x - int_x as f64;
-for _ in 1 ..= 3
-{
-    frac_x *= 10.0;
-    let f = frac_x as u32;
-    s.push((f as u8 + b'0') as char);
-    frac_x = frac_x - f as f64;
-}
+    let mut frac_x = x - int_x as f64;
+    for _ in 1..=3 {
+        frac_x *= 10.0;
+        let f = frac_x as u32;
+        s.push((f as u8 + b'0') as char);
+        frac_x = frac_x - f as f64;
     }
+}
 fn main() {
     let mut s0 = String::from("");
     let mut i = 0;
@@ -100,7 +89,6 @@ fn main() {
 
     println!("{}", s1);
 
-
     let mut s2 = String::new();
 
     add_space(&mut s2, 40);
@@ -111,7 +99,7 @@ fn main() {
     add_space(&mut s2, 40);
     add_str(&mut s2, "RUST.");
     add_str(&mut s2, "\n");
-    
+
     add_str(&mut s2, "\n");
 
     add_space(&mut s2, 4);
