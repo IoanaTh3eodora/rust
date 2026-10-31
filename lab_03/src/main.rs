@@ -249,7 +249,10 @@ fn main() {
         Ok(n) => println!("{}", n),
         Err(e) => print_error(e),
     }
-
+    match char_to_number_hex('ș') {
+        Ok(n) => println!("{}", n),
+        Err(e) => print_error(e),
+    }
     println!("P5");
     match calculate(10, '+', 5) {
         Ok(r) => println!("{}", r),
