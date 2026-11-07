@@ -1,0 +1,6 @@
+# comment
+127.0.0.1 localhost
+192.168.1.10   myserver  alias
+
+# another comment
+10.0.0.1 router
